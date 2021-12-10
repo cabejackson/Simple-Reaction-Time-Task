@@ -8,13 +8,20 @@
   </head>
   <body></body>
   <script>
+    /* initialize jsPsych */
     const jsPsych = initJsPsych();
+    
+    /* create timeline */
+    var timeline = [];
 
-    const hello_trial = {
+    /* define welcome message trial */
+    var welcome = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: 'Hello world!'
-    }
+      stimulus: "Welcome to the experiment. Press any key to begin."
+    };
+    timeline.push(welcome);
 
-    jsPsych.run([hello_trial]);
+    /* start the experiment */
+    jsPsych.run(timeline);
   </script>
 </html>
