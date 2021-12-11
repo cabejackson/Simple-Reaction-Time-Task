@@ -4,6 +4,7 @@
     <title>My experiment</title>
     <script src="jspsych/jspsych.js"></script>
     <script src="jspsych/plugin-html-keyboard-response.js"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@1.0.0"></script>
     <link href="jspsych/jspsych.css" rel="stylesheet" type="text/css" />
   </head>
   <body></body>
@@ -40,6 +41,19 @@
       `, post_trial_gap: 2000
     };
     timeline.push(instructions);
+
+    /* define test trials */
+    var blue_trial = {
+      type:jsPsychImageKeyboardResponse,
+      stimulus: 'img/blue.png',
+      choices: ['f', 'j'],
+    };
+    var orange_trial = {
+      type:jsPsychImageKeyboardResponse,
+      stimulus: 'img/orange.png',
+      choices: ['f', 'j'],
+    };
+    timeline.push(blue_trial, orange_trial);
 
     /* start the experiment */
     jsPsych.run(timeline);
