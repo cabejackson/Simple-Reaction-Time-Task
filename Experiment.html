@@ -15,8 +15,8 @@
       /* display data at end of experiment */
       on_finish: function() {
         jsPsych.data.displayData();
-      }}
-    );
+      },
+    });
     
     /* create timeline */
     var timeline = [];
@@ -31,7 +31,7 @@
     /* define welcome message trial */
     var welcome = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: "Welcome to the experiment. Press any key to begin."
+      stimulus: "Welcome to the experiment. Press any key to begin.",
     };
     timeline.push(welcome);
     
@@ -82,7 +82,7 @@
       timeline: [fixation, test],
       timeline_variables: test_stimuli,
       randomize_order: true,
-      repetitions: 5
+      repetitions: 5,
     };
     timeline.push(test_procedure);
 
