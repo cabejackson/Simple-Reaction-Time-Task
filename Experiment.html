@@ -17,7 +17,6 @@
     var timeline = [];
 
     /* preload images */
-
     var preload = {
       type: jsPsychPreload,
       images: [ 'img/blue.png', 'img/orange.png'],
@@ -51,18 +50,32 @@
     };
     timeline.push(instructions);
 
-    /* define test trials */
-    var blue_trial = {
-      type:jsPsychImageKeyboardResponse,
-      stimulus: 'img/blue.png',
+    /* define trial stimuli array for timeline variables */
+    var test_stimuli = [
+      {stimulus: 'img/blue.png'},
+      {stimulus: 'img/orange.png'}
+    ];
+    
+    /* define fixation and test trials */
+    var fixation = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: '<div style="font-size:60px;">+</div>',
+      choices: 'NO_KEYS',
+      trial_duration: 1000,
+    };
+
+    var test = {
+      type: jsPsychImageKeyboardResponse,
+      stimulus: jsPsych.timelineVariable('stimulus'),
       choices: ['f', 'j'],
     };
-    var orange_trial = {
-      type:jsPsychImageKeyboardResponse,
-      stimulus: 'img/orange.png',
-      choices: ['f', 'j'],
+
+    /* define test procedure */
+    var test_procedure = {
+      timeline: [fixation, test],
+      timeline_variables: test_stimuli,
     };
-    timeline.push(blue_trial, orange_trial);
+    timeline.push(test_procedure);
 
     /* start the experiment */
     jsPsych.run(timeline);
