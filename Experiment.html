@@ -11,7 +11,12 @@
   <body></body>
   <script>
     /* initialize jsPsych */
-    const jsPsych = initJsPsych();
+    const jsPsych = initJsPsych({
+      /* display data at end of experiment */
+      on_finish: function() {
+        jsPsych.data.displayData();
+      }}
+    );
     
     /* create timeline */
     var timeline = [];
